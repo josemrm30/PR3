@@ -10,11 +10,11 @@ public class Configurator {
     private final ArrayList<Long> seeds = new ArrayList<>();
     private final ArrayList<Integer> population = new ArrayList<>();
     private int greedyRandomSize;
-    private final ArrayList<Integer> elite = new ArrayList<>();
-    private final ArrayList<Integer> kBest = new ArrayList<>();
-    private int kWorst;
-    private double crossProb;
-    private double mutationProb;
+    private final ArrayList<Integer> alfa = new ArrayList<>();
+    private final ArrayList<Integer> beta = new ArrayList<>();
+    private int q0;
+    private double probability;
+    private double InitialPheromone;
     private int evaluations;
     private int time;
     private Boolean consoleLog;
@@ -56,26 +56,26 @@ public class Configurator {
                 case "GreedyRandomSize":
                     greedyRandomSize = Integer.parseInt(splited[1]);
                     break;
-                case "Elite":
+                case "Alfa":
                     String[] vElites = splited[1].split(" ");
                     for (String vElite : vElites) {
-                        elite.add(Integer.parseInt(vElite));
+                        alfa.add(Integer.parseInt(vElite));
                     }
                     break;
-                case "kBest":
+                case "Beta":
                     String[] vkBests = splited[1].split(" ");
                     for (String vkBest : vkBests) {
-                        kBest.add(Integer.parseInt(vkBest));
+                        beta.add(Integer.parseInt(vkBest));
                     }
                     break;
-                case "kWorst":
-                    kWorst = Integer.parseInt(splited[1]);
+                case "q0":
+                    q0 = Integer.parseInt(splited[1]);
                     break;
-                case "CrossProb":
-                    crossProb = Double.parseDouble(splited[1]);
+                case "Probability":
+                    probability = Double.parseDouble(splited[1]);
                     break;
-                case "MutationProb":
-                    mutationProb = Double.parseDouble(splited[1]);
+                case "InitialPheromone":
+                    InitialPheromone = Double.parseDouble(splited[1]);
                     break;
                 case "Evaluations":
                     evaluations = Integer.parseInt(splited[1]);
@@ -92,17 +92,8 @@ public class Configurator {
                 case "GreedyRate":
                     greedyRate = Double.parseDouble(splited[1]);
                     break;
-                case "EDPopulation":
-                    edPopulation = Integer.parseInt(splited[1]);
-                    break;
-                case "EDKBest":
-                    edKBest = Integer.parseInt(splited[1]);
-                    break;
                 case "Threads":
                     threads = Integer.parseInt(splited[1]);
-                    break;
-                case "IndividualsEDB":
-                    individualsEDB = Integer.parseInt(splited[1]);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + splited[0]);
@@ -130,24 +121,24 @@ public class Configurator {
         return greedyRandomSize;
     }
 
-    public ArrayList<Integer> getElite() {
-        return elite;
+    public ArrayList<Integer> getAlfa() {
+        return alfa;
     }
 
-    public ArrayList<Integer> getKBest() {
-        return kBest;
+    public ArrayList<Integer> getBeta() {
+        return beta;
     }
 
-    public int getKWorst() {
-        return kWorst;
+    public int getQ0() {
+        return q0;
     }
 
-    public double getCrossProb() {
-        return crossProb;
+    public double getProbability() {
+        return probability;
     }
 
-    public double getMutationProb() {
-        return mutationProb;
+    public double getInitialPheromone() {
+        return InitialPheromone;
     }
 
     public int getEvaluations() {

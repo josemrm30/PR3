@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         ArrayList<ArrayList<Double>> dist = new ArrayList<>();
         int n = 10;
@@ -18,12 +17,7 @@ public class Main {
         double p = 0.1;
         double fi = 0.2;
 
-        //Hormigas h1 = new Hormigas(dist, n, s, iteraciones, poblacion, greedy, alfa, beta, q0, p, fi);
-
-        //hormigas();
-
-
-
+        Hormigas h1 = new Hormigas();
 
     }
 }

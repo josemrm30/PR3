@@ -1,8 +1,5 @@
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Hormigas {
 
@@ -194,12 +191,21 @@ public class Hormigas {
     }
 
     private static void cargaInicial(ArrayList<Integer> hormiga, int n, ArrayList<Boolean> marcados) {
+        Random random = new Random();
+        hormiga.set(0,random.nextInt(0, n-1));
+        marcados.set(hormiga.get(0),true);
         // Implementa la lógica para la carga inicial de las hormigas
     }
 
     private static double coste(ArrayList<Integer> hormiga, ArrayList<ArrayList<Double>> dist, int n) {
+        double cost=0.0;
+        for (int i=0; i<n-1; i++){
+            cost+= dist.get(hormiga.get(i)).get(hormiga.get(i+1));
+        }
+        cost+=dist.get(hormiga.get(0)).get(hormiga.get(n-1));  //cierro el ciclo
+        return cost;
+
         // Implementa la lógica para calcular el coste de una hormiga
-        return 0.0;
     }
 
 }

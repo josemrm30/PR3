@@ -40,7 +40,9 @@ public class Metaheuristic implements Runnable {
     }
 
     public void createLogger(Long seed, int iterations, int alfa, int beta, int population) throws IOException {
-        String logFile = "log/" + alg + "_" + Utils.config.getFile() + "_" + seed + "_P=" + population + "_I=" + iterations + "_alfa=" + alfa + "_beta=" + beta + ".txt";
+        String logFile = "log/" + alg + "_" + Utils.config.getFile() + "_" + seed + "_P=" + population +
+                "_I=" + iterations + "_alfa=" + alfa + "_beta=" + beta + "_q0=" + Utils.config.getQ0() +
+                "_Prob" + Utils.config.getProbability() + "InitPher=" +Utils.config.getInitialPheromone() + ".txt";
 
         log = Logger.getLogger("Ant" + " " + logFile);
         if (Utils.config.getConsoleLog()) {
@@ -69,12 +71,14 @@ public class Metaheuristic implements Runnable {
 
 
         switch (alg) {
-            case "GenOX2":
+            case "Ants":
                 //ALGGenOX2 genes = new ALGGenOX2(seed, elite, kBest, log, cities);
                 //genes.initialization(population, data.getCiudades().length);
                 initTime = System.currentTimeMillis();
                 //actualEvaluations = genes.evaluation(genes.getPopulation(), actualEvaluations);
                 while (actualEvaluations < Utils.config.getEvaluations() && ((System.currentTimeMillis() - initTime) / 1000) < Utils.config.getTime()) {
+
+
 //                    genes.selection();
 //
 //                    genes.cross();
