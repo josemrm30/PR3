@@ -18,7 +18,7 @@ public class Hormigas {
         ArrayList<Double> costes = new ArrayList<>();
         ArrayList<ArrayList<Boolean>> marcados = new ArrayList<>();
 
-        double mejorCosteActual, mejorCosteGlobal = 999999999e+100;
+        double mejorCosteActual, mejorCosteGlobal = Double.MAX_VALUE;
         ArrayList<Integer> mejorHormigaActual = new ArrayList<>();
 
         // Inicializamos las matrices y vectores
@@ -133,7 +133,7 @@ public class Hormigas {
             }
 
             // Calculamos la mejor hormiga
-            mejorCosteActual = 999999999e+100;
+            mejorCosteActual = Double.MAX_VALUE;
             for (int i = 0; i < poblacion; i++) {
                 double coste = coste(hormigas.get(i), dist, n);
                 if (coste < mejorCosteActual) {
@@ -201,8 +201,5 @@ public class Hormigas {
         // Implementa la lógica para calcular el coste de una hormiga
         return 0.0;
     }
-
-
-
 
 }
