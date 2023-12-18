@@ -1,8 +1,12 @@
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Hormigas {
 
+
+    private static Logger log;
 
     public static void Hormigas(ArrayList<ArrayList<Double>> dist,
                                  int n, ArrayList<Integer> s, long iteraciones, int poblacion,
@@ -186,7 +190,7 @@ public class Hormigas {
             //t.stop();
             //tiempo += t.getElapsedTimeInMilliSec();
         }
-
+        log.log(Level.INFO, "Solution = " + s + "  ");
         System.out.println("Total Iteraciones:" + cont);
     }
 
