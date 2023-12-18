@@ -48,7 +48,7 @@ public class Hormigas {
         // Contador de iteraciones del sistema
         int cont = 0;
         long tiempo = 0;
-        Timer t = new Timer();
+        //Timer t = new Timer();
 
         // Principal: Comienzan las iteraciones
         while (cont < iteraciones && tiempo < 600000) {
@@ -191,7 +191,8 @@ public class Hormigas {
             //tiempo += t.getElapsedTimeInMilliSec();
         }
         log.log(Level.INFO, "Solution = " + s + "  ");
-        System.out.println("Total Iteraciones:" + cont);
+        log.log(Level.INFO, "Total Iteraciones = " + cont + "  ");
+        //System.out.println("Total Iteraciones:" + cont);
     }
 
     private static void cargaInicial(ArrayList<Integer> hormiga, int n, ArrayList<Boolean> marcados) {

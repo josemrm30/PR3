@@ -76,17 +76,15 @@ public class Metaheuristic implements Runnable {
                 //genes.initialization(population, data.getCiudades().length);
                 initTime = System.currentTimeMillis();
                 //actualEvaluations = genes.evaluation(genes.getPopulation(), actualEvaluations);
+
                 while (actualEvaluations < Utils.config.getEvaluations() && ((System.currentTimeMillis() - initTime) / 1000) < Utils.config.getTime()) {
+                    //Hormigas h1 = new  Hormigas(dist, n, s, iteraciones, poblacion, greedy, alfa, beta, q0, p, fi);
 
 
 //                    genes.selection();
-//
 //                    genes.cross();
-//
 //                    genes.mutation();
-//
 //                    actualEvaluations = genes.evaluation(genes.getNewPopulation(), actualEvaluations);
-//
 //                    genes.replacement();
                 }
                 endTime = System.currentTimeMillis();
