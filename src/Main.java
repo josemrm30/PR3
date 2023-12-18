@@ -22,7 +22,7 @@ public class Main {
                     for (int k = 0; k < Utils.config.getAlfa().size(); k++) {
                         for (int l = 0; l < Utils.config.getBeta().size(); l++) {
                             for (int m = 0; m < Utils.config.getPopulation().size(); m++) {
-                                Metaheuristic meta = new Metaheuristic(Utils.config.getAlgorithms().get(i), cdl, data, Utils.config.getSeeds().get(j), Utils.config.getAlfa().get(k), Utils.config.getBeta().get(l), Utils.config.getQ0(), Utils.config.getPopulation().get(m), cities);
+                                Metaheuristic meta = new Metaheuristic(Utils.config.getAlgorithms().get(i), cdl, data, Utils.config.getSeeds().get(j),10000, Utils.config.getAlfa().get(k), Utils.config.getBeta().get(l),  Utils.config.getPopulation().get(m), cities);
                                 executor.execute(meta);
                             }
                         }

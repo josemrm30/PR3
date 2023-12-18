@@ -12,14 +12,14 @@ public class Configurator {
     private int greedyRandomSize;
     private final ArrayList<Integer> alfa = new ArrayList<>();
     private final ArrayList<Integer> beta = new ArrayList<>();
-    private int q0;
+    private double q0;
     private double probability;
     private double InitialPheromone;
     private int evaluations;
     private int time;
     private Boolean consoleLog;
     private double randomRate;
-    private double greedyRate;
+    private double greedy;
     private int edPopulation;
     private int edKBest;
     private int threads;
@@ -69,7 +69,7 @@ public class Configurator {
                     }
                     break;
                 case "q0":
-                    q0 = Integer.parseInt(splited[1]);
+                    q0 = Double.parseDouble(splited[1]);
                     break;
                 case "Probability":
                     probability = Double.parseDouble(splited[1]);
@@ -89,8 +89,8 @@ public class Configurator {
                 case "RandomRate":
                     randomRate = Double.parseDouble(splited[1]);
                     break;
-                case "GreedyRate":
-                    greedyRate = Double.parseDouble(splited[1]);
+                case "Greedy":
+                    greedy = Double.parseDouble(splited[1]);
                     break;
                 case "Threads":
                     threads = Integer.parseInt(splited[1]);
@@ -129,7 +129,7 @@ public class Configurator {
         return beta;
     }
 
-    public int getQ0() {
+    public double getQ0() {
         return q0;
     }
 
@@ -157,8 +157,8 @@ public class Configurator {
         return randomRate;
     }
 
-    public double getGreedyRate() {
-        return greedyRate;
+    public double getGreedy() {
+        return greedy;
     }
 
     public int getEdPopulation() {

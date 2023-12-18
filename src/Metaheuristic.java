@@ -17,12 +17,12 @@ public class Metaheuristic implements Runnable {
     private final String alg;
 
 
-    public Metaheuristic(String algorithm, CountDownLatch cdl, LectorDatos dat, Long seed, int elite, int alfa, int beta, int population, int[][] citiesList) throws IOException {
+    public Metaheuristic(String algorithm, CountDownLatch cdl, LectorDatos dat, Long seed, int iterations, int alfa, int beta, int population, int[][] citiesList) throws IOException {
         this.alg = algorithm;
         this.cdl = cdl;
         this.data = dat;
         this.seed = seed;
-        this.iterations = elite;
+        this.iterations = iterations;
         this.alfa = alfa;
         this.beta = beta;
         this.population = population;
