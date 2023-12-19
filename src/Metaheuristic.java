@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.*;
 
@@ -76,10 +77,12 @@ public class Metaheuristic implements Runnable {
                 //genes.initialization(population, data.getCiudades().length);
                 initTime = System.currentTimeMillis();
                 //actualEvaluations = genes.evaluation(genes.getPopulation(), actualEvaluations);
-
+                //ArrayList<Integer> s = new ArrayList<>();
+                Hormigas h1 = new Hormigas();
                 while (actualEvaluations < Utils.config.getEvaluations() && ((System.currentTimeMillis() - initTime) / 1000) < Utils.config.getTime()) {
-                    //Hormigas h1 = new  Hormigas(dist, n, s, iteraciones, poblacion, greedy, alfa, beta, q0, p, fi);
-
+                   h1.Hormigas(Utils.getFileData().getDistancias(), 10, h1.getS(), Utils.config.getEvaluations(),
+                          10, Utils.config.getGreedy(), alfa, beta, Utils.config.getQ0(), Utils.config.getProbability(), Utils.config.getInitialPheromone());
+                    //Hormigas h2 = new Hormigas();
 
 //                    genes.selection();
 //                    genes.cross();

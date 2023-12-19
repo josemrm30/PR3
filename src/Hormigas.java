@@ -7,11 +7,16 @@ public class Hormigas {
 
 
     private static Logger log;
+    private ArrayList<Integer> s;
 
-    public static void Hormigas(ArrayList<ArrayList<Double>> dist,
-                                 int n, ArrayList<Integer> s, long iteraciones, int poblacion,
-                                 double greedy, int alfa, int beta, double q0, double p,
-                                 double fi) {
+    public ArrayList<Integer> getS() {
+        return s;
+    }
+
+    public static void Hormigas(double[][] dist,
+                                int n, ArrayList<Integer> s, long iteraciones, int poblacion,
+                                double greedy, int alfa, int beta, double q0, double p,
+                                double fi) {
 
         ArrayList<ArrayList<Double>> feromona = new ArrayList<>();
         ArrayList<ArrayList<Double>> heuristica = new ArrayList<>();
@@ -39,8 +44,8 @@ public class Hormigas {
                 if (i != j) {
                     feromona.get(j).set(i, fInicial);
                     feromona.get(i).set(j, fInicial);
-                    heuristica.get(j).set(i, 1.0 / dist.get(i).get(j));
-                    heuristica.get(i).set(j, 1.0 / dist.get(i).get(j));
+                    heuristica.get(j).set(i, 1.0 / dist[i][j]);
+                    heuristica.get(i).set(j, 1.0 / dist[i][j]);
                 }
             }
         }
@@ -202,12 +207,12 @@ public class Hormigas {
         // Implementa la lógica para la carga inicial de las hormigas
     }
 
-    private static double coste(ArrayList<Integer> hormiga, ArrayList<ArrayList<Double>> dist, int n) {
+    private static double coste(ArrayList<Integer> hormiga, double[][] dist, int n) {
         double cost=0.0;
         for (int i=0; i<n-1; i++){
-            cost+= dist.get(hormiga.get(i)).get(hormiga.get(i+1));
+            cost+= dist[hormiga.get(i)][hormiga.get(i+1)];
         }
-        cost+=dist.get(hormiga.get(0)).get(hormiga.get(n-1));  //cierro el ciclo
+        cost+=dist[hormiga.get(0)][hormiga.get(n-1)];  //cierro el ciclo
         return cost;
 
         // Implementa la lógica para calcular el coste de una hormiga
