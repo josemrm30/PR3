@@ -39,14 +39,14 @@ public class Hormigas {
 //            }
         }
         for (int i = 0; i < poblacion; i++) {
-            hormigas.add(new ArrayList<>(Arrays.asList(new Integer[n])));
-            marcados.add(new ArrayList<>(Arrays.asList(new Boolean[n])));
-//                hormigas.add(i,new ArrayList<>());
-//                marcados.add(i,new ArrayList<>());
-//            for (int j = 0; j < n; j++) {
-//                hormigas.get(i).add(0);
-//                marcados.get(i).add(false);
-//            }
+//            hormigas.add(new ArrayList<>(Arrays.asList(new Integer[n])));
+//            marcados.add(new ArrayList<>(Arrays.asList(new Boolean[n])));
+                hormigas.add(i,new ArrayList<>());
+                marcados.add(i,new ArrayList<>());
+            for (int j = 0; j < n; j++) {
+                hormigas.get(i).add(0);
+                marcados.get(i).add(false);
+            }
         }
 
 //        for (int i = 0; i < n; i++) {
