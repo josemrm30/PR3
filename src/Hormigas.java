@@ -14,7 +14,7 @@ public class Hormigas {
     }
 
     public static void Hormigas(double[][] dist,
-                                int n, ArrayList<Integer> s, long iteraciones, int poblacion,
+                                int n, ArrayList<Integer> bestSolution, long iteraciones, int poblacion,
                                 double greedy, int alfa, int beta, double q0, double p,
                                 double fi) {
 
@@ -29,14 +29,36 @@ public class Hormigas {
 
         // Inicializamos las matrices y vectores
         for (int i = 0; i < n; i++) {
-            feromona.add(new ArrayList<>(Arrays.asList(new Double[n])));
-            heuristica.add(new ArrayList<>(Arrays.asList(new Double[n])));
+            //feromona.add(new ArrayList<>(Arrays.asList(new Double[n])));
+            //heuristica.add(new ArrayList<>(Arrays.asList(new Double[n])));
+            for (int j = 0; j < n; j++) {
+                feromona.get(i).add(0.0);
+                heuristica.get(i).add(0.0);
+            }
         }
         for (int i = 0; i < poblacion; i++) {
-            hormigas.add(new ArrayList<>(Arrays.asList(new Integer[n])));
-            marcados.add(new ArrayList<>(Arrays.asList(new Boolean[n])));
+//            hormigas.add(new ArrayList<>(Arrays.asList(new Integer[n])));
+//            marcados.add(new ArrayList<>(Arrays.asList(new Boolean[n])));
+            for (int j = 0; j < n; j++) {
+                hormigas.get(i).add(0);
+                marcados.get(i).add(false);
+            }
+
         }
 
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                marcados.get(i).set(j,false);
+                feromona.get(i).set(j,0.0);
+                heuristica.get(i).set(j,0.0);
+
+            }
+        }
+
+
+
+        //duda de la inicialización
         // Carga inicial de feromona y heurística
         double fInicial = 1.0 / (poblacion * greedy);
         for (int i = 0; i < n - 1; i++) {
@@ -56,7 +78,7 @@ public class Hormigas {
         //Timer t = new Timer();
 
         // Principal: Comienzan las iteraciones
-        while (cont < iteraciones && tiempo < 600000) {
+        while (cont < iteraciones && tiempo < Utils.config.getTime()) {
             //t.start();
 
             // Carga de las hormigas iniciales
@@ -151,7 +173,7 @@ public class Hormigas {
             // Actualizamos si la mejor actual mejora al mejor global
             if (mejorCosteActual < mejorCosteGlobal) {
                 mejorCosteGlobal = mejorCosteActual;
-                s = mejorHormigaActual;
+                bestSolution = mejorHormigaActual;
             }
 
             // Aplicamos el demonio
@@ -195,7 +217,7 @@ public class Hormigas {
             //t.stop();
             //tiempo += t.getElapsedTimeInMilliSec();
         }
-        log.log(Level.INFO, "Solution = " + s + "  ");
+        log.log(Level.INFO, "Solution = " + bestSolution + "  ");
         log.log(Level.INFO, "Total Iteraciones = " + cont + "  ");
         //System.out.println("Total Iteraciones:" + cont);
     }
