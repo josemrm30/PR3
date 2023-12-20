@@ -53,6 +53,9 @@ public class Configurator {
                         population.add(Integer.parseInt(vPopulation));
                     }
                     break;
+                case "numPopulation":
+                    edPopulation = Integer.parseInt(splited[1]);
+                    break;
                 case "GreedyRandomSize":
                     greedyRandomSize = Integer.parseInt(splited[1]);
                     break;

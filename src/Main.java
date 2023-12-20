@@ -28,11 +28,6 @@ public class Main {
                         }
                     }
                 }
-            } else {
-                for (int j = 0; j < Utils.config.getSeeds().size(); j++) {
-                    Metaheuristic meta = new Metaheuristic(Utils.config.getAlgorithms().get(i), cdl, data, Utils.config.getSeeds().get(j), Utils.config.getEdKBest(), Utils.config.getEdPopulation(), cities);
-                    executor.execute(meta);
-                }
             }
         }
         cdl.await();
