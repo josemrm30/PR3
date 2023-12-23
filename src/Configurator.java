@@ -9,7 +9,6 @@ public class Configurator {
     private final ArrayList<String> algorithms = new ArrayList<>();
     private final ArrayList<Long> seeds = new ArrayList<>();
     private final ArrayList<Integer> population = new ArrayList<>();
-    private int greedyRandomSize;
     private final ArrayList<Integer> alfa = new ArrayList<>();
     private final ArrayList<Integer> beta = new ArrayList<>();
     private double q0;
@@ -18,12 +17,9 @@ public class Configurator {
     private int evaluations;
     private int time;
     private Boolean consoleLog;
-    private double randomRate;
     private double greedy;
-    private int edPopulation;
-    private int edKBest;
+    private int numCities;
     private int threads;
-    private int individualsEDB;
 
     public Configurator(String path) throws IOException {
         String line;
@@ -53,11 +49,8 @@ public class Configurator {
                         population.add(Integer.parseInt(vPopulation));
                     }
                     break;
-                case "numPopulation":
-                    edPopulation = Integer.parseInt(splited[1]);
-                    break;
-                case "GreedyRandomSize":
-                    greedyRandomSize = Integer.parseInt(splited[1]);
+                case "numCities":
+                    numCities = Integer.parseInt(splited[1]);
                     break;
                 case "Alfa":
                     String[] vElites = splited[1].split(" ");
@@ -89,9 +82,6 @@ public class Configurator {
                 case "ConsoleLog":
                     consoleLog = Boolean.parseBoolean(splited[1]);
                     break;
-                case "RandomRate":
-                    randomRate = Double.parseDouble(splited[1]);
-                    break;
                 case "Greedy":
                     greedy = Double.parseDouble(splited[1]);
                     break;
@@ -118,10 +108,6 @@ public class Configurator {
 
     public ArrayList<String> getAlgorithms() {
         return algorithms;
-    }
-
-    public int getGreedyRandomSize() {
-        return greedyRandomSize;
     }
 
     public ArrayList<Integer> getAlfa() {
@@ -156,27 +142,16 @@ public class Configurator {
         return consoleLog;
     }
 
-    public double getRandomRate() {
-        return randomRate;
-    }
-
     public double getGreedy() {
         return greedy;
     }
 
-    public int getEdPopulation() {
-        return edPopulation;
-    }
-
-    public int getEdKBest() {
-        return edKBest;
+    public int getNumCities() {
+        return numCities;
     }
 
     public int getThreads() {
         return threads;
     }
 
-    public int getIndividualsEDB() {
-        return individualsEDB;
-    }
 }

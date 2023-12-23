@@ -5,7 +5,7 @@ import java.util.logging.*;
 
 public class Metaheuristic implements Runnable {
 
-    private Logger log;
+    private static Logger log;
     private final CountDownLatch cdl;
     private final LectorDatos data;
     private final Long seed;
@@ -73,27 +73,24 @@ public class Metaheuristic implements Runnable {
 
         switch (alg) {
             case "Ants":
-                //ALGGenOX2 genes = new ALGGenOX2(seed, elite, kBest, log, cities);
-                //genes.initialization(population, data.getCiudades().length);
                 initTime = System.currentTimeMillis();
-                //actualEvaluations = genes.evaluation(genes.getPopulation(), actualEvaluations);
-                //ArrayList<Integer> s = new ArrayList<>();
                 Hormigas h1 = new Hormigas();
-                ArrayList<Integer> solution = new ArrayList<>();
+                int n = Utils.config.getNumCities();
+                ArrayList<Integer> mejorCamino=h1.inicializarVectorInt(n);
+                ArrayList<ArrayList<Double>> distancias=h1.inicializarMatrizDou(n);
+
+                int iteraciones = Utils.config.getEvaluations();
+                double greedy = Utils.config.getGreedy();
+                double q0 = Utils.config.getQ0();
+                double p = Utils.config.getProbability();
+                double fi = Utils.config.getInitialPheromone();
                 while (actualEvaluations < Utils.config.getEvaluations() && ((System.currentTimeMillis() - initTime) / 1000) < Utils.config.getTime()) {
-                   h1.Hormigas(Utils.getFileData().getDistancias(), Utils.getFileData().getDistancias().length, solution, Utils.config.getEvaluations(),
-                          Utils.config.getEdPopulation(), Utils.config.getGreedy(), alfa, beta, Utils.config.getQ0(), Utils.config.getProbability(), Utils.config.getInitialPheromone());
+                   h1.hormigas(distancias, n, mejorCamino, iteraciones, population, greedy, alfa, beta, q0, p, fi,log);
 
-
-//                    genes.selection();
-//                    genes.cross();
-//                    genes.mutation();
-//                    actualEvaluations = genes.evaluation(genes.getNewPopulation(), actualEvaluations);
-//                    genes.replacement();
                 }
                 endTime = System.currentTimeMillis();
                 diff = endTime - initTime;
-                log.log(Level.INFO, "Solution= " + solution + " ");
+                log.log(Level.INFO, "Solution= " + mejorCamino + " ");
                 log.log(Level.INFO, "Run time = " + diff + " milliseconds. ");
                 break;
         }
